@@ -222,11 +222,17 @@ div.text-input {
   font-size: 14px;
 }
 
-h1.text-input {
+h1.text-input,
+div.text-input {
   width: 100%;
   border: none;
   outline: none;
   caret-color: rgb(var(--text-placeholder-color), 0.5);
+  margin-bottom: 20px;
+}
+
+div.text-input {
+  margin-bottom: 10px;
 }
 
 [contenteditable]:focus:empty:after {
