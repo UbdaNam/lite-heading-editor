@@ -1,3 +1,5 @@
+import handleElementFocus from '../utils/elementFocusHelper.js';
+
 const handleEditorKeydown = (
   e,
   editor,
@@ -25,7 +27,7 @@ const handleEditorKeydown = (
       e.key === 'Backspace' &&
       editor.querySelectorAll('.text-input').length > 1
     ) {
-      handleBackSpaceKey(e, editor, optionsListContainer, isPopupVisible);
+      handleBackSpaceKey(e, editor);
     }
   }
 };
@@ -49,36 +51,26 @@ const handleEnterKey = (
 };
 
 const handleEscapeKey = (editor, optionsListContainer, isPopupVisible) => {
+  const currEle = document.getElementById('editing');
+  const siblingElement =
+    currEle.previousElementSibling || currEle.nextElementSibling;
+
   isPopupVisible = false;
   optionsListContainer.classList.remove('visible');
 
-  const currEle = document.getElementById('editing');
+  handleElementFocus(siblingElement);
   editor.removeChild(currEle);
 };
 
-const handleBackSpaceKey = (
-  e,
-  editor,
-  optionsListContainer,
-  isPopupVisible
-) => {
+const handleBackSpaceKey = (e, editor) => {
   const currEle = document.getElementById('editing');
 
-  isPopupVisible = false;
-  optionsListContainer.classList.remove('visible');
-
-  if (currEle.textContent == '') {
-    const siblingEle =
+  if (currEle.textContent === '') {
+    const siblingElement =
       currEle.previousElementSibling || currEle.nextElementSibling;
-    const selectobj = window.getSelection();
-    const range = document.createRange();
 
     e.preventDefault();
-    selectobj.removeAllRanges();
-    range.selectNodeContents(siblingEle);
-    range.collapse(false);
-    selectobj.addRange(range);
-    siblingEle.focus();
+    handleElementFocus(siblingElement);
     editor.removeChild(currEle);
   }
 };
