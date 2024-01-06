@@ -195,10 +195,6 @@ nav ul li a:hover {
 
 /* Content container styles */
 
-.content-container {
-  cursor: text;
-}
-
 .content-container hr {
   border: 0;
   height: 0;
@@ -256,9 +252,10 @@ div.text-input {
 
 .editor {
   position: relative;
-  min-height: 11rem;
+  min-height: 13rem;
   display: flex;
   flex-direction: column;
+  cursor: text;
   z-index: 2;
 }
 
