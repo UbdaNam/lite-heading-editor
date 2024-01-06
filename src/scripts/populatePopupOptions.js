@@ -1,6 +1,6 @@
 import replaceCurrentFocusedElement from './replaceCurrentFocusedElement.js';
 
-const populatePopupOptions = (options) => {
+const populatePopupOptions = (options, filterKeyword) => {
   let optionsList = document.querySelector('.options-list');
   optionsList.innerHTML = ``;
 
@@ -15,7 +15,7 @@ const populatePopupOptions = (options) => {
   }
 
   filteredKeywordCounter.classList.add('filter-status');
-  filteredKeywordCounter.innerHTML = `<span>Filtering keyword</span><span>${options.length}</span>`;
+  filteredKeywordCounter.innerHTML = `<span>Filtering keyword</span><span>${filterKeyword}</span>`;
   optionsList.appendChild(filteredKeywordCounter);
 
   options.forEach((option) => {
