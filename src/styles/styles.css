@@ -235,9 +235,30 @@ div.text-input {
   margin-bottom: 10px;
 }
 
+[contenteditable] {
+  position: relative;
+}
+
 [contenteditable]:focus:empty:after {
   content: attr(placeholder);
   color: rgba(var(--text-placeholder-color), 0.4);
+}
+
+[contenteditable]::before {
+  font-family: 'feather';
+  content: '\2261';
+  color: rgba(var(--text-placeholder-color), 0.4);
+  position: absolute;
+  left: -30px;
+  top: 0;
+  z-index: 1;
+  width: 30px;
+  display: none;
+}
+
+[contenteditable]:hover::before {
+  display: block;
+  cursor: pointer;
 }
 
 .editor {
@@ -245,7 +266,7 @@ div.text-input {
   min-height: 11rem;
   display: flex;
   flex-direction: column;
-  z-index: 5;
+  z-index: 2;
 }
 
 /* popup styles */
@@ -259,7 +280,7 @@ div.text-input {
   border: 1px solid rgb(var(--secondary-color), 0.2);
   box-shadow: rgba(149, 157, 165, 0.4) 0px 12px 20px;
   border-radius: 5px;
-  z-index: 100;
+  z-index: 10;
   display: none;
   background-color: #fff;
 }

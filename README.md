@@ -50,7 +50,7 @@ This web application aims to provide users with a user-friendly platform for con
 - **Easy new text input creation**
 - **Edit your texts**
 - **Heading block suggestions**
-- **Autocomplete suggestion**
+- **Real-time suggestions**
 - **Select blocks from suggestion**
 - **Delete your texts**
 - **Create h1 headings effortlessly**

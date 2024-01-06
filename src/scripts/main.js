@@ -1,7 +1,8 @@
-import options from './data/options.js';
+import options from '../data/options.js';
 import handleEditorKeydown from './handleKeyPress.js';
 import populatePopupOptions from './populatePopupOptions.js';
-import filterOptions from './utils/filterOptions.js';
+import filterOptions from '../utils/filterOptions.js';
+import replaceCurrentFocusedElement from './replaceCurrentFocusedElement.js';
 
 let orginalInput = document.querySelector('.main-input');
 let textInput = document.querySelector('.text-input');
@@ -15,20 +16,24 @@ const renderOptions = () => {
   let inputText = textInput.innerText;
   let filterKeyword = '';
   const match = inputText.match(/\/([^\/\s]+)$/);
-  const trial = inputText.split('/');
+  const text = inputText.split('/');
   const lastChar = inputText.slice(-1);
-
   if (match) {
     filterKeyword = match[1];
   }
 
+  if (inputText.match(/\/1\s/)) {
+    replaceCurrentFocusedElement('h1', 'Heading 1').focus();
+    return;
+  }
+
   if (
-    !trial[trial.length - 1].includes(' ') &&
-    trial.length != 1 &&
+    !text[text.length - 1].includes(' ') &&
+    text.length != 1 &&
     lastChar.trim() != ''
   ) {
     let filteredOptions = filterOptions(options, filterKeyword);
-    populatePopupOptions(filteredOptions);
+    populatePopupOptions(filteredOptions, filterKeyword);
 
     if (!isPopupVisible) {
       isPopupVisible = true;
@@ -51,7 +56,7 @@ const renderOptions = () => {
 editor.addEventListener('input', (event) => {
   const target = event.target;
 
-  if (target.matches('#editing') && !target.matches('h1')) {
+  if (target.matches('#editing') && target.matches('div')) {
     renderOptions();
   }
 });
