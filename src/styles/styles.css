@@ -213,15 +213,6 @@ nav ul li a:hover {
   margin-bottom: 4rem;
 }
 
-div.text-input {
-  width: 100%;
-  border: none;
-  outline: none;
-  caret-color: rgb(var(--text-placeholder-color), 0.5);
-  color: rgba(var(--text-color), 1);
-  font-size: 14px;
-}
-
 h1.text-input,
 div.text-input {
   width: 100%;
@@ -232,6 +223,8 @@ div.text-input {
 }
 
 div.text-input {
+  font-size: 14px;
+  color: rgba(var(--text-color), 1);
   margin-bottom: 10px;
 }
 
@@ -245,14 +238,14 @@ div.text-input {
 }
 
 [contenteditable]::before {
-  font-family: 'feather';
   content: '\2261';
-  color: rgba(var(--text-placeholder-color), 0.4);
   position: absolute;
-  left: -30px;
   top: 0;
-  z-index: 1;
+  left: -30px;
   width: 30px;
+  font-family: 'feather';
+  color: rgba(var(--text-placeholder-color), 0.4);
+  z-index: 1;
   display: none;
 }
 
