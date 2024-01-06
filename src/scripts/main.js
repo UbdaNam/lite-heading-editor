@@ -78,9 +78,13 @@ const setActiveElement = () => {
   if (document.getElementById('editing')) {
     document.getElementById('editing').removeAttribute('id');
   }
+
   if (currActiveElement.classList.contains('text-input')) {
     currActiveElement.setAttribute('id', 'editing');
+  } else {
+    editor.insertBefore(orginalInput.cloneNode(), optionsListContainer).focus();
   }
 };
 
 editor.addEventListener('focus', setActiveElement, true);
+editor.addEventListener('click', setActiveElement);
