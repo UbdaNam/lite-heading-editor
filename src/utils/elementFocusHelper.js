@@ -1,11 +1,8 @@
-const handleElementFocus = (element) => {
-  const selectObj = window.getSelection();
-  const range = document.createRange();
-
-  selectObj.removeAllRanges();
+const handleElementFocus = (element, selectObject, range) => {
+  selectObject.removeAllRanges();
   range.selectNodeContents(element);
   range.collapse(false);
-  selectObj.addRange(range);
+  selectObject.addRange(range);
   element.focus();
 };
 
