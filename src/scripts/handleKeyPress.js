@@ -52,25 +52,29 @@ const handleEnterKey = (
 
 const handleEscapeKey = (editor, optionsListContainer, isPopupVisible) => {
   const currEle = document.getElementById('editing');
+  const selectObject = window.getSelection();
+  const range = document.createRange();
   const siblingElement =
     currEle.previousElementSibling || currEle.nextElementSibling;
 
   isPopupVisible = false;
   optionsListContainer.classList.remove('visible');
 
-  handleElementFocus(siblingElement);
+  handleElementFocus(siblingElement, selectObject, range);
   editor.removeChild(currEle);
 };
 
 const handleBackSpaceKey = (e, editor) => {
   const currEle = document.getElementById('editing');
+  const selectObject = window.getSelection();
+  const range = document.createRange();
 
   if (currEle.textContent === '') {
     const siblingElement =
       currEle.previousElementSibling || currEle.nextElementSibling;
 
     e.preventDefault();
-    handleElementFocus(siblingElement);
+    handleElementFocus(siblingElement, selectObject, range);
     editor.removeChild(currEle);
   }
 };
