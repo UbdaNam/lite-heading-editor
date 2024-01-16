@@ -7,7 +7,7 @@ describe('filterOptions', () => {
 
     const result = filterOptions(options, text);
 
-    expect(result).toHaveLength(2);
+    expect(result).toHaveLength(options.length);
   });
 
   it('Should return options with titles matching the given text', () => {
@@ -19,7 +19,7 @@ describe('filterOptions', () => {
   });
 
   it('Should return empty options given non matching text', () => {
-    let text = 'Paragraph';
+    let text = 'Code';
 
     const result = filterOptions(options, text);
 

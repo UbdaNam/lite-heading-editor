@@ -209,8 +209,8 @@ nav ul li a:hover {
   margin-bottom: 4rem;
 }
 
-h1.text-input,
-div.text-input {
+.text-input,
+#editing {
   width: 100%;
   border: none;
   outline: none;
